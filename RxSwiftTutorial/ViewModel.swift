@@ -13,6 +13,12 @@ protocol ViewModelProtocol {
   var title: BehaviorRelay<String> { get set }
 }
 
+extension ViewModelProtocol {
+  func fetch() {
+    title.accept("fetch api value set")
+  }
+}
+
 struct ViewModel: ViewModelProtocol {
   var title = BehaviorRelay<String>(value: "")
 }

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8FU-dk-IRP">
-                                <rect key="frame" x="16" y="383" width="382" height="130.5"/>
+                                <rect key="frame" x="16" y="353" width="382" height="190.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJO-Tf-X5I">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -40,8 +41,19 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiL-6u-CKv">
+                                        <rect key="frame" x="0.0" y="146.5" width="382" height="44"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="GHr-vH-YXk"/>
+                                        </constraints>
+                                        <state key="normal" title="フェッチ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hiL-6u-CKv" secondAttribute="trailing" id="6jO-VX-VgW"/>
                                     <constraint firstAttribute="trailing" secondItem="Ysn-qe-03w" secondAttribute="trailing" id="9nf-ns-RH9"/>
                                     <constraint firstAttribute="trailing" secondItem="MJO-Tf-X5I" secondAttribute="trailing" id="cRm-Ci-f5i"/>
                                     <constraint firstAttribute="trailing" secondItem="Lyz-9k-OCS" secondAttribute="trailing" id="yIa-c2-xFr"/>
@@ -58,6 +70,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fetchButton" destination="hiL-6u-CKv" id="zpd-i0-mqY"/>
                         <outlet property="resetButton" destination="Lyz-9k-OCS" id="ZTr-3n-Pxd"/>
                         <outlet property="textField" destination="Ysn-qe-03w" id="Xaf-ZB-Wm8"/>
                         <outlet property="titleLabel" destination="MJO-Tf-X5I" id="Zq7-AT-EIi"/>
@@ -69,6 +82,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

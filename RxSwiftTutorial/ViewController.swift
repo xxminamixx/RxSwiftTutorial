@@ -14,6 +14,7 @@ final class ViewController: UIViewController {
   @IBOutlet private weak var titleLabel: UILabel!
   @IBOutlet private weak var textField: UITextField!
   @IBOutlet private weak var resetButton: UIButton!
+  @IBOutlet private weak var fetchButton: UIButton!
   
   private let viewModel: ViewModelProtocol = {
     ViewModel()
@@ -37,13 +38,25 @@ final class ViewController: UIViewController {
       .bind(to: viewModel.title)
       .disposed(by: disposeBag)
     
-    resetButton.rx.tap.bind(to: buttonTapBinder).disposed(by: disposeBag)
+    // リセットボタンの押下イベント設定
+    resetButton.rx.tap
+      .bind(to: buttonTapBinder)
+      .disposed(by: disposeBag)
+    // フェッチボタンの押下イベントを設定
+    fetchButton.rx.tap
+      .subscribe { [unowned self] _ in
+        // subscribe で stream を検知して処理を実行する
+        self.viewModel.fetch()
+      }
+      .disposed(by: disposeBag)
+    
   }
   
   /// ボタン押下時処理
   private var buttonTapBinder: Binder<()> {
     return Binder(self) { base, _ in
       // ViewModelに値をセット
+      // accept で stream に値を流す
       self.viewModel.title.accept("")
     }
   }
